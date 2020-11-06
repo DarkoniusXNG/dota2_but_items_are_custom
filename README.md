@@ -17,7 +17,7 @@ This is the primary gamemode script and should be used to assist in initializing
 This file contains helpful pseudo-event functions prepared for you for frequently needed initialization actions.
 
 #### events.lua
-This file contains hooked versions of most useful events that fire in the DotA 2 Lua vscript code.
+This file contains hooked versions of most useful events that fire in the DotA 2 Engine.
 You can drop your event functions in there to have your game mode react to events.
 
 ## Libraries
@@ -37,5 +37,4 @@ To debug code set the USE_DEBUG in settings.lua to true.
 
 ## Additional Information
 - You can adjust the number of players allowed on each of your maps by editing both addoninfo.txt. and settings.lua
-- For making custom buildings use: https://github.com/MNoya/BuildingHelper
 - DOTA 2 Scripting API both on Server and on Client side (maintained by ark120202): https://dota.tools/vscripts/
