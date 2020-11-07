@@ -45,6 +45,8 @@ function barebones:OnGameRulesStateChange(keys)
 
 	elseif new_state == DOTA_GAMERULES_STATE_PRE_GAME then
 		DebugPrint("[BAREBONES] Game State changed to: DOTA_GAMERULES_STATE_PRE_GAME")
+		GameRules:GetGameModeEntity():SetCustomRadiantScore(0)
+		GameRules:GetGameModeEntity():SetCustomDireScore(0)
 
 	elseif new_state == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
 		DebugPrint("[BAREBONES] Game State changed to: DOTA_GAMERULES_STATE_GAME_IN_PROGRESS")
@@ -470,6 +472,12 @@ function barebones:OnEntityKilled(keys)
 				respawn_time = MAX_RESPAWN_TIME
 			end
 			
+			-- Respawn time percentage
+			local multiplier = BUTTINGS.RESPAWN_TIME_PERCENTAGE
+			if multiplier then
+				respawn_time = respawn_time*multiplier*0.01
+			end
+
 			-- If hero is actually reincarnating don't change his respawn time:
 			if not killed_unit:IsReincarnating() then
 				killed_unit:SetTimeUntilRespawn(respawn_time)
@@ -498,8 +506,10 @@ function barebones:OnEntityKilled(keys)
 
 		-- Setting top bar values
 		if SHOW_KILLS_ON_TOPBAR then
-			GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_BADGUYS, GetTeamHeroKills(DOTA_TEAM_BADGUYS))
-			GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_GOODGUYS, GetTeamHeroKills(DOTA_TEAM_GOODGUYS))
+			--GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_BADGUYS, GetTeamHeroKills(DOTA_TEAM_BADGUYS))
+			--GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_GOODGUYS, GetTeamHeroKills(DOTA_TEAM_GOODGUYS))
+			GameRules:GetGameModeEntity():SetCustomRadiantScore(GetTeamHeroKills(DOTA_TEAM_GOODGUYS))
+			GameRules:GetGameModeEntity():SetCustomDireScore(GetTeamHeroKills(DOTA_TEAM_BADGUYS))
 		end
 	end
 
