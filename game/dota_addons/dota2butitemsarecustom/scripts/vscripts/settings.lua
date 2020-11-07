@@ -3,8 +3,8 @@ USE_DEBUG = true                       -- Should we print statements on almost e
 
 BUTTINGS = {
 	-- These will be the default settings shown on the Team Select screen.
-	--GAME_TITLE = WORKSHOP_TITLE,
-	
+	GAME_TITLE = "Dota 2 but...",
+
 	GAME_MODE = "AP",                   -- "AR" "AP" All Random/ All Pick
 	ALLOW_SAME_HERO_SELECTION = 0,      -- 0 = everyone must pick a different hero, 1 = can pick same
 	HERO_BANNING = 1,                   -- 0 = no banning, 1 = banning phase
@@ -22,7 +22,7 @@ BUTTINGS = {
 	--TOMBSTONE = 0,                      -- 0 = normal, 1 = You spawn a tombstone when you die. Teammates can ressurect you by channeling it.
 	--MAGIC_RES_CAP = 0,                  -- 0 = normal, 1 = Keeps Magic Resistance <100%
 	--CLASSIC_ARMOR = 0,
-	
+
 	--NO_UPHILL_MISS = 0,                 -- 0 = normal, 1 = 0% uphill muss chance
 	--OUTPOST_SHOP = 0,                   -- 0 = normal, 1 = jungle shops
 	--SIDE_SHOP = 0,                      -- 0 = normal, 1 = bring back sideshops

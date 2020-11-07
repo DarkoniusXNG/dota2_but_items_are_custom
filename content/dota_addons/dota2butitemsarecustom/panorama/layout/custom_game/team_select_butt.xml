@@ -69,13 +69,13 @@
 																	 class="SettingsItem" maxchars="5" unit="%"/>
 												<Label text="Respawn Time" class="TextEntryLabel"/>
 										</Panel>
-										<Panel class="SettingsItem TextEntryFrame">
-												<TextEntry onfocus="onfocus('COOLDOWN_PERCENTAGE')"
-																	 oninputsubmit="onPanelChange('COOLDOWN_PERCENTAGE')"
-																	 onblur="onPanelChange('COOLDOWN_PERCENTAGE')" id="COOLDOWN_PERCENTAGE"
-																	 class="SettingsItem" maxchars="5" unit="%"/>
-												<Label text="CD rate" class="TextEntryLabel"/>
-										</Panel>
+										<!-- <Panel class="SettingsItem TextEntryFrame"> -->
+												<!-- <TextEntry onfocus="onfocus('COOLDOWN_PERCENTAGE')" -->
+																	 <!-- oninputsubmit="onPanelChange('COOLDOWN_PERCENTAGE')" -->
+																	 <!-- onblur="onPanelChange('COOLDOWN_PERCENTAGE')" id="COOLDOWN_PERCENTAGE" -->
+																	 <!-- class="SettingsItem" maxchars="5" unit="%"/> -->
+												<!-- <Label text="CD rate" class="TextEntryLabel"/> -->
+										<!-- </Panel> -->
 										<Panel class="SettingsItem TextEntryFrame">
 												<TextEntry onfocus="onfocus('GOLD_PER_MINUTE')" oninputsubmit="onPanelChange('GOLD_PER_MINUTE')"
 																	 onblur="onPanelChange('GOLD_PER_MINUTE')" id="GOLD_PER_MINUTE" class="SettingsItem"
@@ -85,60 +85,60 @@
 								</Panel>
 								<Panel class="SettingsGroup w-31">
 										<Label class="SettingsGroupTitle" text="Butt Exclusive"/>
-										<ToggleButton class="SettingsItem" id="SIDE_SHOP" text="Side Shops at old positions"
-																	onactivate="onPanelChange('SIDE_SHOP')"/>
-										<ToggleButton class="SettingsItem" id="OUTPOST_SHOP" text="Side Shops at Outposts"
-																	onactivate="onPanelChange('OUTPOST_SHOP')"/>
-										<ToggleButton class="SettingsItem" id="FREE_COURIER" text="Custom Couriers"
-																	onactivate="onPanelChange('FREE_COURIER')"/>
-										<ToggleButton class="SettingsItem" id="ALWAYS_PASSIVE_GOLD" text="Always Passive Gold"
-																	onactivate="onPanelChange('ALWAYS_PASSIVE_GOLD')"/>
-										<ToggleButton id="CLASSIC_ARMOR" class="SettingsItem" text="Classic Armor Formula"
-																	onactivate="onPanelChange('CLASSIC_ARMOR')"/>
-										<ToggleButton id="MAGIC_RES_CAP" class="SettingsItem" text="Cap Magic Resistance"
-																	onactivate="onPanelChange('MAGIC_RES_CAP')"/>
-										<ToggleButton id="NO_UPHILL_MISS" class="SettingsItem" text="No Uphill Miss"
-																	onactivate="onPanelChange('NO_UPHILL_MISS')"/>
-										<ToggleButton id="TOMBSTONE" class="SettingsItem" text="Revival Tombstone"
-																	onactivate="onPanelChange('TOMBSTONE')"/>
+										<!-- <ToggleButton class="SettingsItem" id="SIDE_SHOP" text="Side Shops at old positions" -->
+																	<!-- onactivate="onPanelChange('SIDE_SHOP')"/> -->
+										<!-- <ToggleButton class="SettingsItem" id="OUTPOST_SHOP" text="Side Shops at Outposts" -->
+																	<!-- onactivate="onPanelChange('OUTPOST_SHOP')"/> -->
+										<!-- <ToggleButton class="SettingsItem" id="FREE_COURIER" text="Custom Couriers" -->
+																	<!-- onactivate="onPanelChange('FREE_COURIER')"/> -->
+										<!-- <ToggleButton class="SettingsItem" id="ALWAYS_PASSIVE_GOLD" text="Always Passive Gold" -->
+																	<!-- onactivate="onPanelChange('ALWAYS_PASSIVE_GOLD')"/> -->
+										<!-- <ToggleButton id="CLASSIC_ARMOR" class="SettingsItem" text="Classic Armor Formula" -->
+																	<!-- onactivate="onPanelChange('CLASSIC_ARMOR')"/> -->
+										<!-- <ToggleButton id="MAGIC_RES_CAP" class="SettingsItem" text="Cap Magic Resistance" -->
+																	<!-- onactivate="onPanelChange('MAGIC_RES_CAP')"/> -->
+										<!-- <ToggleButton id="NO_UPHILL_MISS" class="SettingsItem" text="No Uphill Miss" -->
+																	<!-- onactivate="onPanelChange('NO_UPHILL_MISS')"/> -->
+										<!-- <ToggleButton id="TOMBSTONE" class="SettingsItem" text="Revival Tombstone" -->
+																	<!-- onactivate="onPanelChange('TOMBSTONE')"/> -->
 										<Panel class="SettingsItem TextEntryFrame">
 												<TextEntry onfocus="onfocus('XP_PER_MINUTE')" oninputsubmit="onPanelChange('XP_PER_MINUTE')"
 																	 onblur="onPanelChange('XP_PER_MINUTE')" id="XP_PER_MINUTE" class="SettingsItem"
 																	 maxchars="5"/>
 												<Label text="Passive XP Per Minute" class="TextEntryLabel"/>
 										</Panel>
-										<Panel class="SettingsItem TextEntryFrame">
-												<TextEntry onfocus="onfocus('COMEBACK_TIMER')" oninputsubmit="onPanelChange('COMEBACK_TIMER')"
-																	 onblur="onPanelChange('COMEBACK_TIMER')" id="COMEBACK_TIMER" class="SettingsItem"
-																	 maxchars="5" unit="min"/>
-												<Label text="Comeback Timer" class="TextEntryLabel"/>
-										</Panel>
-										<Panel class="SettingsItem TextEntryFrame">
-												<TextEntry onfocus="onfocus('COMEBACK_GPM')" oninputsubmit="onPanelChange('COMEBACK_GPM')"
-																	 onblur="onPanelChange('COMEBACK_GPM')" id="COMEBACK_GPM" class="SettingsItem"
-																	 maxchars="5"/>
-												<Label text="Comeback GPM" class="TextEntryLabel"/>
-										</Panel>
-										<Panel class="SettingsItem TextEntryFrame">
-												<TextEntry onfocus="onfocus('COMEBACK_XPPM')" oninputsubmit="onPanelChange('COMEBACK_XPPM')"
-																	 onblur="onPanelChange('COMEBACK_XPPM')" id="COMEBACK_XPPM" class="SettingsItem"
-																	 maxchars="5"/>
-												<Label text="Comeback ExpPM" class="TextEntryLabel"/>
-										</Panel>
-										<Panel class="SettingsItem TextEntryFrame">
-												<TextEntry onfocus="onfocus('SHARED_GOLD_PERCENTAGE')"
-																	 oninputsubmit="onPanelChange('SHARED_GOLD_PERCENTAGE')"
-																	 onblur="onPanelChange('SHARED_GOLD_PERCENTAGE')" id="SHARED_GOLD_PERCENTAGE"
-																	 class="SettingsItem" maxchars="5" unit="%"/>
-												<Label text="Shared Gold" class="TextEntryLabel"/>
-										</Panel>
-										<Panel class="SettingsItem TextEntryFrame">
-												<TextEntry onfocus="onfocus('SHARED_XP_PERCENTAGE')"
-																	 oninputsubmit="onPanelChange('SHARED_XP_PERCENTAGE')"
-																	 onblur="onPanelChange('SHARED_XP_PERCENTAGE')" id="SHARED_XP_PERCENTAGE"
-																	 class="SettingsItem" maxchars="5" unit="%"/>
-												<Label text="Shared XP" class="TextEntryLabel"/>
-										</Panel>
+										<!-- <Panel class="SettingsItem TextEntryFrame"> -->
+												<!-- <TextEntry onfocus="onfocus('COMEBACK_TIMER')" oninputsubmit="onPanelChange('COMEBACK_TIMER')" -->
+																	 <!-- onblur="onPanelChange('COMEBACK_TIMER')" id="COMEBACK_TIMER" class="SettingsItem" -->
+																	 <!-- maxchars="5" unit="min"/> -->
+												<!-- <Label text="Comeback Timer" class="TextEntryLabel"/> -->
+										<!-- </Panel> -->
+										<!-- <Panel class="SettingsItem TextEntryFrame"> -->
+												<!-- <TextEntry onfocus="onfocus('COMEBACK_GPM')" oninputsubmit="onPanelChange('COMEBACK_GPM')" -->
+																	 <!-- onblur="onPanelChange('COMEBACK_GPM')" id="COMEBACK_GPM" class="SettingsItem" -->
+																	 <!-- maxchars="5"/> -->
+												<!-- <Label text="Comeback GPM" class="TextEntryLabel"/> -->
+										<!-- </Panel> -->
+										<!-- <Panel class="SettingsItem TextEntryFrame"> -->
+												<!-- <TextEntry onfocus="onfocus('COMEBACK_XPPM')" oninputsubmit="onPanelChange('COMEBACK_XPPM')" -->
+																	 <!-- onblur="onPanelChange('COMEBACK_XPPM')" id="COMEBACK_XPPM" class="SettingsItem" -->
+																	 <!-- maxchars="5"/> -->
+												<!-- <Label text="Comeback ExpPM" class="TextEntryLabel"/> -->
+										<!-- </Panel> -->
+										<!-- <Panel class="SettingsItem TextEntryFrame"> -->
+												<!-- <TextEntry onfocus="onfocus('SHARED_GOLD_PERCENTAGE')" -->
+																	 <!-- oninputsubmit="onPanelChange('SHARED_GOLD_PERCENTAGE')" -->
+																	 <!-- onblur="onPanelChange('SHARED_GOLD_PERCENTAGE')" id="SHARED_GOLD_PERCENTAGE" -->
+																	 <!-- class="SettingsItem" maxchars="5" unit="%"/> -->
+												<!-- <Label text="Shared Gold" class="TextEntryLabel"/> -->
+										<!-- </Panel> -->
+										<!-- <Panel class="SettingsItem TextEntryFrame"> -->
+												<!-- <TextEntry onfocus="onfocus('SHARED_XP_PERCENTAGE')" -->
+																	 <!-- oninputsubmit="onPanelChange('SHARED_XP_PERCENTAGE')" -->
+																	 <!-- onblur="onPanelChange('SHARED_XP_PERCENTAGE')" id="SHARED_XP_PERCENTAGE" -->
+																	 <!-- class="SettingsItem" maxchars="5" unit="%"/> -->
+												<!-- <Label text="Shared XP" class="TextEntryLabel"/> -->
+										<!-- </Panel> -->
 								</Panel>
 								<Panel class="SettingsGroup w-31">
 										<ToggleButton id="ALT_WINNING" class="SettingsGroupTitle" text="Alternative Winning Conditions"
@@ -157,14 +157,14 @@
 										</Panel>
 								</Panel>
 								<Panel class="SettingsGroup w-31">
-										<ToggleButton id="BUYBACK_RULES" class="SettingsGroupTitle" text="Alternative Buyback Rules"
+										<ToggleButton id="BUYBACK_RULES" class="SettingsGroupTitle" text="Disable Buyback"
 																	onactivate="onPanelChange('BUYBACK_RULES')"/>
-										<Panel class="SettingsItem TextEntryFrame">
-												<TextEntry onfocus="onfocus('BUYBACK_LIMIT')" oninputsubmit="onPanelChange('BUYBACK_LIMIT')"
-																	 onblur="onPanelChange('BUYBACK_LIMIT')" id="BUYBACK_LIMIT" class="SettingsItem"
-																	 maxchars="5"/>
-												<Label text="Buybacks limit" class="TextEntryLabel"/>
-										</Panel>
+										<!-- <Panel class="SettingsItem TextEntryFrame"> -->
+												<!-- <TextEntry onfocus="onfocus('BUYBACK_LIMIT')" oninputsubmit="onPanelChange('BUYBACK_LIMIT')" -->
+																	 <!-- onblur="onPanelChange('BUYBACK_LIMIT')" id="BUYBACK_LIMIT" class="SettingsItem" -->
+																	 <!-- maxchars="5"/> -->
+												<!-- <Label text="Buybacks limit" class="TextEntryLabel"/> -->
+										<!-- </Panel> -->
 										<Panel class="SettingsItem TextEntryFrame">
 												<TextEntry onfocus="onfocus('BUYBACK_COOLDOWN')" oninputsubmit="onPanelChange('BUYBACK_COOLDOWN')"
 																	 onblur="onPanelChange('BUYBACK_COOLDOWN')" id="BUYBACK_COOLDOWN" class="SettingsItem"

@@ -125,7 +125,7 @@ function barebones:InitGameMode()
 
 	GameRules:SetHeroSelectionTime(HERO_SELECTION_TIME) --THIS IS IGNORED when "EnablePickRules" is "1" in 'addoninfo.txt' !
 	GameRules:SetHeroSelectPenaltyTime(HERO_SELECTION_PENALTY_TIME)
-	
+
 	GameRules:SetPreGameTime(PRE_GAME_TIME)
 	GameRules:SetPostGameTime(POST_GAME_TIME)
 	GameRules:SetShowcaseTime(SHOWCASE_TIME)
@@ -248,7 +248,7 @@ function barebones:InitGameMode()
 
 	print("[BAREBONES] initialized.")
 	DebugPrint("[BAREBONES] Done loading the game mode!\n\n")
-	
+
 	-- Increase/decrease maximum item limit per hero
 	Convars:SetInt('dota_max_physical_items_purchase_limit', 64)
 end
@@ -256,7 +256,7 @@ end
 -- This function is called as the first player loads and sets up the game mode parameters
 function barebones:CaptureGameMode()
 	local gamemode = GameRules:GetGameModeEntity()
-	
+
 	-- Set GameMode parameters
 	gamemode:SetRecommendedItemsDisabled(RECOMMENDED_BUILDS_DISABLED)
 	gamemode:SetCameraDistanceOverride(CAMERA_DISTANCE_OVERRIDE)
@@ -315,6 +315,7 @@ end
 
 function barebones:AdjustGameMode()
 	DebugPrint("[DOTA BUTT] Adjusting game mode settings and rules that were set by the host.")
+
 	BUTTINGS = BUTTINGS or {}
 	UNIVERSAL_SHOP_MODE = BUTTINGS.UNIVERSAL_SHOP_MODE == 1
 	ALLOW_SAME_HERO_SELECTION = BUTTINGS.ALLOW_SAME_HERO_SELECTION == 1
@@ -337,7 +338,7 @@ function barebones:AdjustGameMode()
 
 	GameRules:SetSameHeroSelectionEnabled(ALLOW_SAME_HERO_SELECTION)
 	GameRules:SetUseUniversalShopMode(UNIVERSAL_SHOP_MODE)
-	
+
 	local gamemode = GameRules:GetGameModeEntity()
 
 	if BUTTINGS.GAME_MODE == "AR" then
@@ -359,7 +360,7 @@ function barebones:AdjustGameMode()
 			end
 		end, delay)
 	end
-	
+
 	if ENABLE_BANNING_PHASE then
 		gamemode:SetDraftingBanningTimeOverride(BANNING_PHASE_TIME)
 	end
