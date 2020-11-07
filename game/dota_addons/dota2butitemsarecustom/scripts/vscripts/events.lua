@@ -131,7 +131,12 @@ function barebones:OnHeroInGame(hero)
 				-- Set the starting gold for the player's hero
 				-- If the NORMAL_START_GOLD is smaller then 600, remove Strategy Time and use SetGold
 				--PlayerResource:ModifyGold(playerID, NORMAL_START_GOLD-600, false, 0)
-
+				
+				-- Add permanent modifiers to the hero
+				if PlayerResource:IsValidPlayerID(playerID) then
+					hero:AddNewModifier(hero, nil, "modifier_custom_passive_gold", {})
+					hero:AddNewModifier(hero, nil, "modifier_custom_passive_xp", {})
+				end
 
 				-- Make sure that stuff above will not happen again for the player if some other hero spawns
 				-- for him for the first time during the game 

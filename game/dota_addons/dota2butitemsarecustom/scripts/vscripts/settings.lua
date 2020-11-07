@@ -15,7 +15,7 @@ BUTTINGS = {
 	--ALWAYS_PASSIVE_GOLD = 0,			-- 0 = normal (always),  1 = when custom courier is dead passive gold is disabled;
 	--COOLDOWN_PERCENTAGE = 100,          -- (default = 100) factor for all cooldowns
 	GOLD_GAIN_PERCENTAGE = 100,         -- (default = 100) factor for gold income
-	GOLD_PER_MINUTE = 90,               -- (default =  90) passive gold
+	GOLD_PER_MINUTE = 95,               -- (default =  95) passive gold
 	--RESPAWN_TIME_PERCENTAGE = 100,      -- (default = 100) factor for respawn time
 	XP_GAIN_PERCENTAGE = 100,           -- (default = 100) factor for xp income
 
@@ -27,7 +27,7 @@ BUTTINGS = {
 	--OUTPOST_SHOP = 0,                   -- 0 = normal, 1 = jungle shops
 	--SIDE_SHOP = 0,                      -- 0 = normal, 1 = bring back sideshops
 	--FREE_COURIER = 1,
-	--XP_PER_MINUTE = 0,                  -- (normal dota = 0) everyone gets passive experience (like the passive gold)
+	XP_PER_MINUTE = 0,                  -- (normal dota = 0) everyone gets passive experience (like the passive gold)
 	--COMEBACK_TIMER = 30,                -- timer (minutes) to start comeback XP / gold 
 	--COMEBACK_GPM = 60,                  -- passive gold for the poorest team
 	--COMEBACK_XPPM = 120,                -- passive experience for the lowest team
@@ -70,10 +70,9 @@ PRE_GAME_TIME = 90.0                    -- How long after showcase time should t
 POST_GAME_TIME = 180.0                   -- How long should we let people stay around before closing the server automatically?
 TREE_REGROW_TIME = 300.0                -- How long should it take individual trees to respawn after being cut down/destroyed?
 
---GOLD_PER_TICK = 100                     -- How much gold should players get per tick? DOESN'T WORK
---GOLD_TICK_TIME = 1.0                    -- How long should we wait in seconds between gold ticks? DOESN'T WORK
-
 NORMAL_START_GOLD = 600                 -- Starting Gold
+PASSIVE_GOLD_PER_MINUTE = BUTTINGS.GOLD_PER_MINUTE
+PASSIVE_XP_PER_MINUTE = BUTTINGS.XP_PER_MINUTE
 
 RECOMMENDED_BUILDS_DISABLED = false     -- Should we disable the recommended item builds for heroes? Turns the panel for showing recommended items at the shop off/on.
 CAMERA_DISTANCE_OVERRIDE = 1134.0       -- How far out should we allow the camera to go? 1134 is the default in Dota.

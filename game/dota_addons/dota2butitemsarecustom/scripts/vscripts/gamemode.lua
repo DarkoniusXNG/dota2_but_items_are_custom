@@ -243,6 +243,8 @@ function barebones:InitGameMode()
 
 	-- Global Lua Modifiers
 	LinkLuaModifier("modifier_custom_invulnerable", "modifiers/modifier_custom_invulnerable", LUA_MODIFIER_MOTION_NONE)
+	LinkLuaModifier("modifier_custom_passive_gold", "modifiers/modifier_custom_passive_gold.lua", LUA_MODIFIER_MOTION_NONE)
+	LinkLuaModifier("modifier_custom_passive_xp", "modifiers/modifier_custom_passive_xp.lua", LUA_MODIFIER_MOTION_NONE)
 
 	print("[BAREBONES] initialized.")
 	DebugPrint("[BAREBONES] Done loading the game mode!\n\n")
@@ -312,11 +314,13 @@ function barebones:CaptureGameMode()
 end
 
 function barebones:AdjustGameMode()
-	DebugPrint("[DOTA BUTT] Adjusting game mode settings that were set by the host.")
+	DebugPrint("[DOTA BUTT] Adjusting game mode settings and rules that were set by the host.")
 	BUTTINGS = BUTTINGS or {}
 	UNIVERSAL_SHOP_MODE = BUTTINGS.UNIVERSAL_SHOP_MODE == 1
 	ALLOW_SAME_HERO_SELECTION = BUTTINGS.ALLOW_SAME_HERO_SELECTION == 1
 	ENABLE_BANNING_PHASE = BUTTINGS.HERO_BANNING == 1
+	PASSIVE_GOLD_PER_MINUTE = BUTTINGS.GOLD_PER_MINUTE
+	PASSIVE_XP_PER_MINUTE = BUTTINGS.XP_PER_MINUTE
 	CUSTOM_BUYBACK_COOLDOWN_ENABLED = BUTTINGS.BUYBACK_COOLDOWN ~= 480
 	CUSTOM_BUYBACK_COOLDOWN_TIME = BUTTINGS.BUYBACK_COOLDOWN
 	END_GAME_ON_KILLS = BUTTINGS.ALT_WINNING == 1
