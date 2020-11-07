@@ -31,6 +31,7 @@ function barebones:OnGameRulesStateChange(keys)
 
 	elseif new_state == DOTA_GAMERULES_STATE_HERO_SELECTION then
 		DebugPrint("[BAREBONES] Game State changed to: DOTA_GAMERULES_STATE_HERO_SELECTION")
+		self:AdjustGameMode()
 		self:PostLoadPrecache()
 		self:OnAllPlayersLoaded()
 	elseif new_state == DOTA_GAMERULES_STATE_STRATEGY_TIME then

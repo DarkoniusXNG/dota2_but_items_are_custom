@@ -175,6 +175,8 @@ function barebones:ExperienceFilter(keys)
 	-- DOTA_ModifyXP_Outpost = 5
 	-- DOTA_ModifyXP_MAX = 6
 
+	keys.experience = experience * BUTTINGS.XP_GAIN_PERCENTAGE * 0.01
+
 	return true
 end
 
@@ -201,6 +203,8 @@ function barebones:BountyRuneFilter(keys)
 	local gold_bounty = keys.gold_bounty
 	local playerID = keys.player_id_const
 	local xp_bounty = keys.xp_bounty		-- value: 0
+
+	keys.gold_bounty = gold_bounty * BUTTINGS.GOLD_GAIN_PERCENTAGE * 0.01
 
 	return true
 end
@@ -276,6 +280,10 @@ function barebones:GoldFilter(keys)
 	-- DOTA_ModifyGold_SharedGold = 18
 	-- DOTA_ModifyGold_AbilityGold = 19
 	-- DOTA_ModifyGold_WardKill = 20
+
+	if reason ~= DOTA_ModifyGold_BountyRune then
+		keys.gold = gold * BUTTINGS.GOLD_GAIN_PERCENTAGE * 0.01
+	end
 
 	return true
 end

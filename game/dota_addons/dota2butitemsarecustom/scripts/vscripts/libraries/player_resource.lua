@@ -214,3 +214,29 @@ function CDOTA_PlayerResource:GetTotalEarnedXPForTeam(teamID)
   end
   return total_xp
 end
+
+-- returns table with playerID and player
+function CDOTA_PlayerResource:GetFriendlyPlayers(playerID)
+	local teamID = self:GetTeam(playerID)
+	local out = {}
+	for p = 0, DOTA_MAX_PLAYERS do
+		if (self:IsValidPlayer(p)) and (self:GetTeam(p)==teamID) then
+			out[p] = self:GetPlayer(p)
+		else
+			out[p] = nil
+		end
+	end
+	return out
+end
+
+-- Friendly HeroList
+function CDOTA_PlayerResource:GetFriendlyHeroes(playerID)
+	local teamID = self:GetTeam(playerID)
+	local out = HeroList:GetAllHeroes()
+	for h, hero in pairs(out) do
+		if (hero:GetTeam() ~= teamID) then
+			out[h] = nil
+		end
+	end
+	return out
+end

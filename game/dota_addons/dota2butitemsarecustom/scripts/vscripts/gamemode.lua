@@ -42,25 +42,27 @@ end
 function barebones:OnAllPlayersLoaded()
   DebugPrint("[BAREBONES] All Players have loaded into the game.")
   
-  -- Force Random a hero for every player that didnt pick a hero when time runs out
-  local delay = HERO_SELECTION_TIME + HERO_SELECTION_PENALTY_TIME + STRATEGY_TIME - 0.1
-  if ENABLE_BANNING_PHASE then
-    delay = delay + BANNING_PHASE_TIME
-  end
-  Timers:CreateTimer(delay, function()
-    for playerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
-      if PlayerResource:IsValidPlayerID(playerID) then
-        -- If this player still hasn't picked a hero, random one
-        -- PlayerResource:IsConnected(index) is custom-made; can be found in 'player_resource.lua' library
-        if not PlayerResource:HasSelectedHero(playerID) and PlayerResource:IsConnected(playerID) and not PlayerResource:IsBroadcaster(playerID) then
-          PlayerResource:GetPlayer(playerID):MakeRandomHeroSelection() -- this will cause an error if player is disconnected, that's why we check if player is connected
-          PlayerResource:SetHasRandomed(playerID)
-          PlayerResource:SetCanRepick(playerID, false)
-          DebugPrint("[BAREBONES] Randomed a hero for a player number "..playerID)
-        end
-      end
+  if BUTTINGS.GAME_MODE ~= "AR" then
+    -- Force Random a hero for every player that didnt pick a hero when time runs out
+    local delay = HERO_SELECTION_TIME + HERO_SELECTION_PENALTY_TIME + STRATEGY_TIME - 0.1
+    if ENABLE_BANNING_PHASE then
+	  delay = delay + BANNING_PHASE_TIME
     end
-  end)
+    Timers:CreateTimer(delay, function()
+	  for playerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
+	    if PlayerResource:IsValidPlayerID(playerID) then
+		  -- If this player still hasn't picked a hero, random one
+		  -- PlayerResource:IsConnected(index) is custom-made; can be found in 'player_resource.lua' library
+		  if not PlayerResource:HasSelectedHero(playerID) and PlayerResource:IsConnected(playerID) and not PlayerResource:IsBroadcaster(playerID) then
+		    PlayerResource:GetPlayer(playerID):MakeRandomHeroSelection() -- this will cause an error if player is disconnected, that's why we check if player is connected
+		    PlayerResource:SetHasRandomed(playerID)
+		    PlayerResource:SetCanRepick(playerID, false)
+		    DebugPrint("[BAREBONES] Randomed a hero for a player number "..playerID)
+		  end
+	    end
+	  end
+    end)
+  end
 end
 
 --[[
@@ -78,9 +80,47 @@ end
 function barebones:InitGameMode()
 	DebugPrint("[BAREBONES] Starting to load Game Rules.")
 
+	CustomNetTables:SetTableValue("butt_settings", "default", BUTTINGS)
+	CustomGameEventManager:RegisterListener("butt_setting_changed", function(_,kv)
+		BUTTINGS[kv.setting] = kv.value
+		print(kv.setting, ":", kv.value)
+	end)
+	CustomGameEventManager:RegisterListener("butt_on_clicked", function(_,kv)
+		local name = kv.button
+		if name == "RESET" then
+			-- BUTTINGS = table.copy(BUTTINGS_DEFAULT)
+			for k, v in pairs(BUTTINGS_DEFAULT) do
+				CustomGameEventManager:Send_ServerToAllClients("butt_setting_changed", {setting = k, value = v})
+			end
+		end
+	end)
+	CustomGameEventManager:RegisterListener("endscreen_butt", function(_,request)
+		local playerInfo = {}
+		print("endscreen_butt requested")
+		for k,v in pairs(request) do
+			print("req",k,v,type(k))
+			local pID = tonumber(k)
+			if pID then
+				-- print(pID,v.team)
+				playerInfo[pID] = { team = v.team }
+				playerInfo[pID].Kills = PlayerResource:GetKills(pID).." ("..PlayerResource:GetStreak(pID)..")"
+				playerInfo[pID].Damage = PlayerResource:GetRawPlayerDamage(pID)
+				playerInfo[pID].Healing = PlayerResource:GetHealing(pID)
+				playerInfo[pID].LH = PlayerResource:GetLastHits(pID).." ("..PlayerResource:GetLastHitStreak(pID)..")"
+				playerInfo[pID].GPM = math.floor(PlayerResource:GetGoldPerMin(pID)+0.5)
+				playerInfo[pID].EPM = math.floor(PlayerResource:GetXPPerMin(pID)+0.5)
+				playerInfo[pID].TotalXP = PlayerResource:GetTotalEarnedXP(pID)
+				playerInfo[pID].DamageTaken = PlayerResource:GetCreepDamageTaken(pID) + PlayerResource:GetHeroDamageTaken(pID) + PlayerResource:GetTowerDamageTaken(pID)
+				playerInfo[pID].GetGoldSpentOnItems = PlayerResource:GetGoldSpentOnItems(pID)
+				playerInfo[pID].RunePickups = PlayerResource:GetRunePickups(pID)
+			end
+		end
+		CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(request.PlayerID), "endscreen_butt", playerInfo)
+	end)
+
 	-- Setup rules
-	GameRules:SetSameHeroSelectionEnabled(ALLOW_SAME_HERO_SELECTION)
-	GameRules:SetUseUniversalShopMode(UNIVERSAL_SHOP_MODE)
+	--GameRules:SetSameHeroSelectionEnabled(ALLOW_SAME_HERO_SELECTION)
+	--GameRules:SetUseUniversalShopMode(UNIVERSAL_SHOP_MODE)
 	GameRules:SetHeroRespawnEnabled(ENABLE_HERO_RESPAWN)
 
 	GameRules:SetHeroSelectionTime(HERO_SELECTION_TIME) --THIS IS IGNORED when "EnablePickRules" is "1" in 'addoninfo.txt' !
@@ -97,8 +137,6 @@ function barebones:InitGameMode()
 		GameRules:SetUseCustomHeroXPValues(true)
 	end
 
-	--GameRules:SetGoldPerTick(GOLD_PER_TICK) -- Doesn't work 24.2.2020
-	--GameRules:SetGoldTickTime(GOLD_TICK_TIME) -- Doesn't work 24.2.2020
 	GameRules:SetStartingGold(NORMAL_START_GOLD)
 
 	if USE_CUSTOM_HERO_GOLD_BOUNTY then
@@ -220,19 +258,19 @@ function barebones:CaptureGameMode()
 	-- Set GameMode parameters
 	gamemode:SetRecommendedItemsDisabled(RECOMMENDED_BUILDS_DISABLED)
 	gamemode:SetCameraDistanceOverride(CAMERA_DISTANCE_OVERRIDE)
-	gamemode:SetBuybackEnabled(BUYBACK_ENABLED)
+	--gamemode:SetBuybackEnabled(BUYBACK_ENABLED)
 	gamemode:SetCustomBuybackCostEnabled(CUSTOM_BUYBACK_COST_ENABLED)
-	gamemode:SetCustomBuybackCooldownEnabled(CUSTOM_BUYBACK_COOLDOWN_ENABLED)
-	gamemode:SetTopBarTeamValuesOverride(USE_CUSTOM_TOP_BAR_VALUES)
+	--gamemode:SetCustomBuybackCooldownEnabled(CUSTOM_BUYBACK_COOLDOWN_ENABLED)
+	gamemode:SetTopBarTeamValuesOverride(USE_CUSTOM_TOP_BAR_VALUES) -- Check if it works
 	gamemode:SetTopBarTeamValuesVisible(TOP_BAR_VISIBLE)
 
-	if USE_CUSTOM_XP_VALUES then
-		gamemode:SetUseCustomHeroLevels(true)
-		gamemode:SetCustomXPRequiredToReachNextLevel(XP_PER_LEVEL_TABLE)
-	end
+	-- if USE_CUSTOM_XP_VALUES then
+		-- gamemode:SetUseCustomHeroLevels(true)
+		-- gamemode:SetCustomXPRequiredToReachNextLevel(XP_PER_LEVEL_TABLE)
+	-- end
 
 	gamemode:SetBotThinkingEnabled(USE_STANDARD_DOTA_BOT_THINKING)
-	gamemode:SetTowerBackdoorProtectionEnabled(ENABLE_TOWER_BACKDOOR_PROTECTION)
+	gamemode:SetTowerBackdoorProtectionEnabled(true)
 
 	gamemode:SetFogOfWarDisabled(DISABLE_FOG_OF_WAR_ENTIRELY)
 	gamemode:SetGoldSoundDisabled(DISABLE_GOLD_SOUNDS)
@@ -246,9 +284,9 @@ function barebones:CaptureGameMode()
 	else
 		gamemode:SetDraftingHeroPickSelectTimeOverride(HERO_SELECTION_TIME)
 		gamemode:SetDraftingBanningTimeOverride(0)
-		if ENABLE_BANNING_PHASE then
-			gamemode:SetDraftingBanningTimeOverride(BANNING_PHASE_TIME)
-		end
+		-- if ENABLE_BANNING_PHASE then
+			-- gamemode:SetDraftingBanningTimeOverride(BANNING_PHASE_TIME)
+		-- end
 	end
 	--gamemode:SetFixedRespawnTime(FIXED_RESPAWN_TIME) -- FIXED_RESPAWN_TIME should be float
 	gamemode:SetFountainConstantManaRegen(FOUNTAIN_CONSTANT_MANA_REGEN)
@@ -259,16 +297,7 @@ function barebones:CaptureGameMode()
 	gamemode:SetMinimumAttackSpeed(MINIMUM_ATTACK_SPEED)
 	gamemode:SetStashPurchasingDisabled(DISABLE_STASH_PURCHASING)
 
-	if USE_DEFAULT_RUNE_SYSTEM then
-		gamemode:SetUseDefaultDOTARuneSpawnLogic(true)
-	else
-		-- Most runes are broken by Valve, RuneSpawnFilter also doesn't work
-		for rune, spawn in pairs(ENABLED_RUNES) do
-			gamemode:SetRuneEnabled(rune, spawn)
-		end
-		gamemode:SetBountyRuneSpawnInterval(BOUNTY_RUNE_SPAWN_INTERVAL)
-		gamemode:SetPowerRuneSpawnInterval(POWER_RUNE_SPAWN_INTERVAL)
-	end
+	gamemode:SetUseDefaultDOTARuneSpawnLogic(true)
 
 	gamemode:SetUnseenFogOfWarEnabled(USE_UNSEEN_FOG_OF_WAR)
 	gamemode:SetDaynightCycleDisabled(DISABLE_DAY_NIGHT_CYCLE)
@@ -279,7 +308,63 @@ function barebones:CaptureGameMode()
 	gamemode:SetCustomGlyphCooldown(CUSTOM_GLYPH_COOLDOWN)
 	gamemode:DisableHudFlip(FORCE_MINIMAP_ON_THE_LEFT)
 
-	if DEFAULT_DOTA_COURIER then
-		gamemode:SetFreeCourierModeEnabled(true)
+	gamemode:SetFreeCourierModeEnabled(true)
+end
+
+function barebones:AdjustGameMode()
+	DebugPrint("[DOTA BUTT] Adjusting game mode settings that were set by the host.")
+	BUTTINGS = BUTTINGS or {}
+	UNIVERSAL_SHOP_MODE = BUTTINGS.UNIVERSAL_SHOP_MODE == 1
+	ALLOW_SAME_HERO_SELECTION = BUTTINGS.ALLOW_SAME_HERO_SELECTION == 1
+	ENABLE_BANNING_PHASE = BUTTINGS.HERO_BANNING == 1
+	CUSTOM_BUYBACK_COOLDOWN_ENABLED = BUTTINGS.BUYBACK_COOLDOWN ~= 480
+	CUSTOM_BUYBACK_COOLDOWN_TIME = BUTTINGS.BUYBACK_COOLDOWN
+	END_GAME_ON_KILLS = BUTTINGS.ALT_WINNING == 1
+	KILLS_TO_END_GAME_FOR_TEAM = BUTTINGS.ALT_KILL_LIMIT
+	USE_CUSTOM_XP_VALUES = BUTTINGS.MAX_LEVEL ~= 30
+	MAX_LEVEL = BUTTINGS.MAX_LEVEL
+	if MAX_LEVEL < 30 then
+      XP_PER_LEVEL_TABLE = {}
+	  XP_PER_LEVEL_TABLE[1] = 0
+	end
+	for i = #XP_PER_LEVEL_TABLE+1, MAX_LEVEL do
+		XP_PER_LEVEL_TABLE[i] = XP_PER_LEVEL_TABLE[i-1] + i*100
+	end
+
+	GameRules:SetSameHeroSelectionEnabled(ALLOW_SAME_HERO_SELECTION)
+	GameRules:SetUseUniversalShopMode(UNIVERSAL_SHOP_MODE)
+	
+	local gamemode = GameRules:GetGameModeEntity()
+
+	if BUTTINGS.GAME_MODE == "AR" then
+		local delay = 0
+		if ENABLE_BANNING_PHASE then
+			delay = BANNING_PHASE_TIME
+		end
+
+		gamemode:SetThink( function()
+			for playerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
+			  if PlayerResource:IsValidPlayerID(playerID) then
+				if not PlayerResource:HasSelectedHero(playerID) and PlayerResource:IsConnected(playerID) and not PlayerResource:IsBroadcaster(playerID) then
+				  PlayerResource:GetPlayer(playerID):MakeRandomHeroSelection() -- this will cause an error if player is disconnected, that's why we check if player is connected
+				  PlayerResource:SetHasRandomed(playerID)
+				  PlayerResource:SetCanRepick(playerID, false)
+				  DebugPrint("[DOTA BUTT] Randomed a hero for a player number "..playerID)
+				end
+			  end
+			end
+		end, delay)
+	end
+	
+	if ENABLE_BANNING_PHASE then
+		gamemode:SetDraftingBanningTimeOverride(BANNING_PHASE_TIME)
+	end
+
+	gamemode:SetBuybackEnabled(BUYBACK_ENABLED)
+	gamemode:SetCustomBuybackCooldownEnabled(CUSTOM_BUYBACK_COOLDOWN_ENABLED)
+
+	if USE_CUSTOM_XP_VALUES then
+		gamemode:SetUseCustomHeroLevels(true)
+		gamemode:SetCustomXPRequiredToReachNextLevel(XP_PER_LEVEL_TABLE)
 	end
 end
