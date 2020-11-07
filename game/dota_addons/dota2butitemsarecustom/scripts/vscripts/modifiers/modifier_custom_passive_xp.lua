@@ -17,6 +17,9 @@ function modifier_custom_passive_xp:OnCreated()
 	local parent = self:GetParent()
 
 	local XP_PER_MINUTE = PASSIVE_XP_PER_MINUTE
+	DebugPrint("Passive XPM is: ")
+	DebugPrint(XP_PER_MINUTE)
+
 	if XP_PER_MINUTE ~= 0 then
 		self.xpTickTime = 60/XP_PER_MINUTE
 		self.xpPerTick = 1
@@ -24,7 +27,9 @@ function modifier_custom_passive_xp:OnCreated()
 		self.xpPerTick = 0
 		self:Destroy()
 	end
-	self:StartIntervalThink(self.xpTickTime)
+	if self.xpTickTime then
+		self:StartIntervalThink(self.xpTickTime)
+	end
 end
 
 function modifier_custom_passive_xp:OnIntervalThink()

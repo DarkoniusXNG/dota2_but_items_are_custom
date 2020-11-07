@@ -123,7 +123,7 @@ function barebones:InitGameMode()
 	--GameRules:SetUseUniversalShopMode(UNIVERSAL_SHOP_MODE)
 	GameRules:SetHeroRespawnEnabled(ENABLE_HERO_RESPAWN)
 
-	GameRules:SetHeroSelectionTime(HERO_SELECTION_TIME) --THIS IS IGNORED when "EnablePickRules" is "1" in 'addoninfo.txt' !
+	--GameRules:SetHeroSelectionTime(HERO_SELECTION_TIME) --THIS IS IGNORED when "EnablePickRules" is "1" in 'addoninfo.txt' !
 	GameRules:SetHeroSelectPenaltyTime(HERO_SELECTION_PENALTY_TIME)
 
 	GameRules:SetPreGameTime(PRE_GAME_TIME)
@@ -314,8 +314,10 @@ function barebones:CaptureGameMode()
 end
 
 function barebones:AdjustGameMode()
+	DebugPrint("[DOTA BUTT] Lock game mode settings and rules.")
+	CustomNetTables:SetTableValue("butt_settings", "locked", BUTTINGS)
+	DeepPrintTable(BUTTINGS)
 	DebugPrint("[DOTA BUTT] Adjusting game mode settings and rules that were set by the host.")
-
 	BUTTINGS = BUTTINGS or {}
 	UNIVERSAL_SHOP_MODE = BUTTINGS.UNIVERSAL_SHOP_MODE == 1
 	ALLOW_SAME_HERO_SELECTION = BUTTINGS.ALLOW_SAME_HERO_SELECTION == 1

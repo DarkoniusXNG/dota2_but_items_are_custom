@@ -7,7 +7,7 @@ BUTTINGS = {
 
 	GAME_MODE = "AP",                   -- "AR" "AP" All Random/ All Pick
 	ALLOW_SAME_HERO_SELECTION = 0,      -- 0 = everyone must pick a different hero, 1 = can pick same
-	HERO_BANNING = 1,                   -- 0 = no banning, 1 = banning phase
+	HERO_BANNING = 0,                   -- 0 = no banning, 1 = banning phase
 	--USE_BOTS = 0, -- TODO
 	MAX_LEVEL = 30,
 
@@ -16,7 +16,7 @@ BUTTINGS = {
 	--COOLDOWN_PERCENTAGE = 100,          -- (default = 100) factor for all cooldowns
 	GOLD_GAIN_PERCENTAGE = 100,         -- (default = 100) factor for gold income
 	GOLD_PER_MINUTE = 95,               -- (default =  95) passive gold
-	--RESPAWN_TIME_PERCENTAGE = 100,      -- (default = 100) factor for respawn time
+	RESPAWN_TIME_PERCENTAGE = 100,      -- (default = 100) factor for respawn time
 	XP_GAIN_PERCENTAGE = 100,           -- (default = 100) factor for xp income
 
 	--TOMBSTONE = 0,                      -- 0 = normal, 1 = You spawn a tombstone when you die. Teammates can ressurect you by channeling it.

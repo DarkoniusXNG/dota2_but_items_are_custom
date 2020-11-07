@@ -22,7 +22,10 @@ function modifier_custom_passive_gold:OnCreated()
 	end
 	local parent = self:GetParent()
 
-	local GOLD_PER_MINUTE = PASSIVE_GOLD_PER_MINUTE-95
+	local GOLD_PER_MINUTE = PASSIVE_GOLD_PER_MINUTE - 95
+	DebugPrint("Additional passive GPM is: ")
+	DebugPrint(GOLD_PER_MINUTE)
+
 	if GOLD_PER_MINUTE > 0 then
 		self.goldTickTime = 60/GOLD_PER_MINUTE
 		self.goldPerTick = 1
@@ -30,7 +33,9 @@ function modifier_custom_passive_gold:OnCreated()
 		self.goldPerTick = 0
 		self:Destroy()
 	end
-	self:StartIntervalThink(self.goldTickTime)
+	if self.goldTickTime then
+		self:StartIntervalThink(self.goldTickTime)
+	end
 end
 
 function modifier_custom_passive_gold:OnIntervalThink()

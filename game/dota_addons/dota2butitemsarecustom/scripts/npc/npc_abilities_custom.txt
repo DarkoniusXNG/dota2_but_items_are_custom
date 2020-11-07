@@ -1,7 +1,0 @@
-#base "abilities/dummy_unit_ability.txt"
-
-"DOTAAbilities"
-{
-	"Version"   "1"
-
-}
