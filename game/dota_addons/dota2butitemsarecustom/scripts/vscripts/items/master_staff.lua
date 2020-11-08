@@ -9,14 +9,14 @@ end
 function item_master_staff:OnSpellStart()
 	local caster = self:GetCaster()
 	local target = self:GetCursorTarget()
-	
+
 	-- Don't do anything if target has Spell Block
 	if target:TriggerSpellAbsorb(self) then
 		return
 	end
 
 	local debuff_duration = self:GetSpecialValueFor("mute_duration")
-	
+
 	local function DispelEnemy(unit)
 		if unit then
 			unit:RemoveModifierByName("modifier_eul_cyclone")
@@ -34,12 +34,14 @@ function item_master_staff:OnSpellStart()
 	if target:IsIllusion() then
 		-- Sound on illusions is before the actual effect
 		target:EmitSound("DOTA_Item.Nullifier.Target")
+
 		-- Kill the illusions
 		target:Kill(self, caster)
 	else
+		-- Offensive dispel (purge)
 		DispelEnemy(target)
 
-		-- Apply item debuff
+		-- Apply debuff
 		target:AddNewModifier(caster, self, "modifier_item_master_staff_muted", {duration = debuff_duration})
 
 		-- Sound on real heroes is after actual effect
@@ -85,12 +87,26 @@ function modifier_item_master_staff_muted:OnDestroy()
 	CustomItemEnable(caster, parent)
 end
 
+function modifier_item_master_staff_muted:CheckState()
+	return {
+		[MODIFIER_STATE_MUTED] = true,
+	}
+end
+
 function modifier_item_master_staff_muted:GetEffectName()
 	return "particles/items4_fx/nullifier_mute_debuff.vpcf"
 end
 
+--function modifier_item_master_staff_muted:GetEffectAttachType()
+	--return --follow_origin
+--end
+
 function modifier_item_master_staff_muted:GetStatusEffectName()
 	return "particles/status_fx/status_effect_nullifier.vpcf"
+end
+
+function modifier_item_master_staff_muted:StatusEffectPriority()
+	return 11
 end
 
 -- This function disables inventory and removes item passives.

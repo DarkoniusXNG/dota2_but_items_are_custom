@@ -33,7 +33,8 @@
 	"item_ultimate_king_bar"
 	{
 		"ID"							"8116"
-		"BaseClass"						"item_datadriven"
+		"BaseClass"						"item_lua"
+		"ScriptFile"					"items/ultimate_king_bar.lua"
 		"AbilityTextureName" 			"custom/ultimate_king_bar"
 		
 		"ItemCost"						"7050"
@@ -65,22 +66,22 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_str"				"15"
+				"bonus_strength"		"15"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_agi"				"5"
+				"bonus_agility"			"5"
 			}
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_int"				"5"
+				"bonus_intellect"		"5"
 			}
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_dmg"				"30"
+				"bonus_damage"			"30"
 			}
 			"05"
 			{
@@ -89,74 +90,74 @@
 			}
 		}
 		
-		"OnSpellStart"
-		{
-			"FireSound"
-			{
-				"EffectName"    "DOTA_Item.BlackKingBar.Activate"
-				"Target"        "CASTER"
-			}
+		// "OnSpellStart"
+		// {
+			// "FireSound"
+			// {
+				// "EffectName"    "DOTA_Item.BlackKingBar.Activate"
+				// "Target"        "CASTER"
+			// }
 
-			"RunScript"
-			{
-				"ScriptFile"    "items/ultimate_king_bar.lua"
-				"Function"      "BKBPurge"
-			}
+			// "RunScript"
+			// {
+				// "ScriptFile"    "items/ultimate_king_bar.lua"
+				// "Function"      "BKBPurge"
+			// }
 
-			"ApplyModifier"
-			{
-				"ModifierName"  "item_modifier_forgotten_king_bar_damage_shield"
-				"Target"        "CASTER"
-				"Duration"      "%duration"
-			}
-		}
+			// "ApplyModifier"
+			// {
+				// "ModifierName"  "item_modifier_forgotten_king_bar_damage_shield"
+				// "Target"        "CASTER"
+				// "Duration"      "%duration"
+			// }
+		// }
 		
-		"Modifiers"
-		{
-			"modifier_item_ultimate_king_bar_passives" // doesn't need tooltip
-			{
-				"Passive" 		"1"  
-				"IsHidden" 		"1"
-				"IsBuff"		"1"
-				"IsPurgable"	"0"
+		// "Modifiers"
+		// {
+			// "modifier_item_ultimate_king_bar_passives" // doesn't need tooltip
+			// {
+				// "Passive" 		"1"  
+				// "IsHidden" 		"1"
+				// "IsBuff"		"1"
+				// "IsPurgable"	"0"
 				
-				"Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE" // This makes duplicate items stack their properties
+				// "Attributes" 	"MODIFIER_ATTRIBUTE_MULTIPLE" // This makes duplicate items stack their properties
 				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 			"%bonus_str"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%bonus_agi"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 			"%bonus_int"
-					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"			"%bonus_dmg"
-				}
-			}
+				// "Properties"
+				// {
+					// "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 			"%bonus_str"
+					// "MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%bonus_agi"
+					// "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 			"%bonus_int"
+					// "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"			"%bonus_dmg"
+				// }
+			// }
 			
-			"item_modifier_forgotten_king_bar_damage_shield" // needs tooltip
-			{
-				"IsHidden"				"0"
-				"IsBuff"				"1"
-				"IsPurgable"			"0"
+			// "item_modifier_forgotten_king_bar_damage_shield" // needs tooltip
+			// {
+				// "IsHidden"				"0"
+				// "IsBuff"				"1"
+				// "IsPurgable"			"0"
 				
-				"TextureName"			"custom/ultimate_king_bar"
+				// "TextureName"			"custom/ultimate_king_bar"
 				
-				"StatusEffectName"		"particles/status_fx/status_effect_ghost.vpcf"        
-				"StatusEffectPriority"	"12"
+				// "StatusEffectName"		"particles/status_fx/status_effect_ghost.vpcf"        
+				// "StatusEffectPriority"	"12"
 				
-				"EffectName"			"particles/test_particle/damage_immunity.vpcf"
-				"EffectAttachType"		"follow_origin"
+				// "EffectName"			"particles/test_particle/damage_immunity.vpcf"
+				// "EffectAttachType"		"follow_origin"
 				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"		"1"
-					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"		"1"
-					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE"			"1"
-				}
+				// "Properties"
+				// {
+					// "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"		"1"
+					// "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"		"1"
+					// "MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE"			"1"
+				// }
 				
-				"States"
-				{
-					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
-			}
-		}
+				// "States"
+				// {
+					// "MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+				// }
+			// }
+		// }
 	}
 }

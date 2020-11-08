@@ -19,7 +19,10 @@ function item_infused_robe:OnSpellStart()
 	local barrier_duration = self:GetSpecialValueFor("barrier_duration")
 	local barrier_hp = self:GetSpecialValueFor("barrier_block")
 
+	-- Apply the buff
 	caster:AddNewModifier(caster, self, "modifier_item_infused_robe_damage_barrier", {duration = barrier_duration, barrier = barrier_hp})
+
+	-- Sound
 	caster:EmitSound("Hero_Abaddon.AphoticShield.Cast")
 end
 
@@ -28,7 +31,7 @@ end
 modifier_item_infused_robe_damage_block = modifier_item_infused_robe_damage_block or class({})
 
 function modifier_item_infused_robe_damage_block:IsHidden()
-	return false
+	return true
 end
 
 function modifier_item_infused_robe_damage_block:IsDebuff()
@@ -118,7 +121,7 @@ end
 modifier_item_infused_robe_damage_barrier = modifier_item_infused_robe_damage_barrier or class({})
 
 function modifier_item_infused_robe_damage_barrier:IsHidden()
-	return true
+	return false
 end
 
 function modifier_item_infused_robe_damage_barrier:IsDebuff()
