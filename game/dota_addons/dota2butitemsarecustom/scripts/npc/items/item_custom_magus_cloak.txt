@@ -1,0 +1,94 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Recipe: Magus Cloak
+	//=================================================================================================================
+	"item_recipe_custom_magus_cloak"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"1278"
+		"BaseClass"                     "item_datadriven"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"105"
+		"ItemShopTags"					""
+
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_custom_magus_cloak"
+		"ItemRequirements"
+		{
+			"01"						"item_mantle;item_circlet;item_sobi_mask;item_faerie_fire"
+		}
+	}
+	
+	//=================================================================================================================
+	// Magus Cloak - Mantle (145) + Circlet (155) + Sage Mask (175) + Faerie Fire (70) + Recipe (105) = 650
+	// Notes: OK; 25.12.2019;
+	//=================================================================================================================
+	"item_custom_magus_cloak"
+	{
+		"ID"                                              "1279"
+        "AbilityBehavior"                                 "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+        "BaseClass"                                       "item_lua"
+		"ScriptFile"                                      "items/magus_cloak.lua"
+
+		"AbilityTextureName"                              "custom/magus_cloak"
+
+		"ItemCost"                                        "650"
+		"ItemShopTags"                                    "damage;int;agi;str;regen_mana"
+		"ItemSellable"                                    "1"
+		"ItemPurchasable"                                 "1"
+		"ItemDroppable"                                   "1"
+        "ItemShareability"                                "ITEM_NOT_SHAREABLE"
+		"ItemDeclarations"                                "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemQuality"                                     "rare"
+		"ItemAliases"                                     "magus;magus cloak;mc"
+		"ItemDisassembleRule"                             "DOTA_ITEM_DISASSEMBLE_NEVER"
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01" // Null Talisman (5)
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"bonus_intellect"                         "5"
+			}
+			"02" // Null Talisman (2)
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"bonus_strength"                          "2"
+			}
+			"03" // Null Talisman (2)
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"bonus_agility"                           "2"
+			}
+			"04" // Faerie Fire (2)
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"bonus_damage"                            "2"
+			}
+			"05" // Null Talisman (3)
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"bonus_spell_amp"                         "3"
+			}
+			"06" // Sage Mask (0.6); Null Talisman (0.6);
+			{
+				"var_type"                                "FIELD_FLOAT"
+				"bonus_mana_regen"                        "0.75"
+			}
+			"07" // it should stack with other magus cloaks
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"bonus_debuff_amp"                        "-5"
+			}
+		}
+	}
+}

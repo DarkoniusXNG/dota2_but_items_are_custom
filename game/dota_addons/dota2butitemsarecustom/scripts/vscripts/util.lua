@@ -168,3 +168,16 @@ function CBaseEntity:IsFountain()
 	
 	return false
 end
+
+function HasBit(flags, specific_flag)
+	local to_check = flags
+	local specific_bit = specific_flag
+	if type(to_check) == 'userdata' then
+		to_check = tonumber(tostring(flags))
+	end
+	if type(specific_bit) == 'userdata' then
+		specific_bit = tonumber(tostring(specific_flag))
+	end
+
+	return bit.band(to_check, specific_bit) == specific_bit
+end

@@ -1,0 +1,98 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Recipe: Custom Ring of Aquila
+	//=================================================================================================================
+	"item_recipe_custom_ring_of_aquila"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"8211"
+		"BaseClass"                     "item_datadriven"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"
+		"ItemShopTags"					""
+
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_custom_ring_of_aquila"
+		"ItemRequirements"
+		{
+			"01"						"item_slippers;item_circlet;item_ring_of_protection;item_sobi_mask"
+		}
+	}
+
+	//=================================================================================================================
+	// Custom Ring of Aquila - Slippers (145) + Circlet (155) + Ring of Protection (175) + Sage Mask (175) = 650
+	// Notes: OK; 25.12.2019; No Aura;
+	//=================================================================================================================
+	"item_custom_ring_of_aquila"
+	{
+		"ID"              			"8212"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		"BaseClass"					"item_lua"
+		"ScriptFile"				"items/custom_ring_of_aquila.lua"
+
+		"AbilityTextureName"		"item_ring_of_aquila"
+
+		"ItemCost"					"650"
+		"ItemShopTags"              "damage;agi;int;str;regen_mana;armor"
+		"ItemSellable" 				"1"
+		"ItemPurchasable"			"1"
+		"ItemDroppable"				"1"
+		"ItemShareability"        	"ITEM_NOT_SHAREABLE"
+		"ItemDeclarations"        	"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemQuality"  				"rare"
+		"ItemAliases"               "roa;ring of aquila;aquila"
+		"ItemDisassembleRule" 		"DOTA_ITEM_DISASSEMBLE_NEVER"
+
+		"UIPickupSound"				"Item.PickUpRingShop"
+		"UIDropSound"				"Item.DropRingShop"
+		"WorldDropSound"			"Item.DropRingWorld"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01" // Wraith Band (5)
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"bonus_agility"                           "5"
+			}
+			"02" // Wraith Band (2)
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"bonus_strength"                          "2"
+			}
+			"03" // Wraith Band (2)
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"bonus_intellect"                         "2"
+			}
+			"04"
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"bonus_damage"                            "2"
+			}
+			"05" // Wraith Band (5)
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"bonus_attack_speed"                      "5"
+			}
+			"06" // Ring of Protection (2); Wraith Band (1.5);
+			{
+				"var_type"                                "FIELD_INTEGER"
+				"bonus_armor"                             "2"
+			}
+			"07" // Sage Mask (0.6)
+			{
+				"var_type"                                "FIELD_FLOAT"
+				"bonus_mana_regen"                        "0.75"
+			}
+		}
+	}
+}
