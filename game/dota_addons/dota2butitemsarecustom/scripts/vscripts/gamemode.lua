@@ -246,6 +246,8 @@ function barebones:InitGameMode()
 	LinkLuaModifier("modifier_custom_passive_gold", "modifiers/modifier_custom_passive_gold.lua", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_custom_passive_xp", "modifiers/modifier_custom_passive_xp.lua", LUA_MODIFIER_MOTION_NONE)
 	LinkLuaModifier("modifier_custom_leash_debuff", "modifiers/modifier_custom_leash_debuff.lua", LUA_MODIFIER_MOTION_NONE)
+	LinkLuaModifier("modifier_intrinsic_multiplexer", "modifiers/modifier_intrinsic_multiplexer.lua", LUA_MODIFIER_MOTION_NONE)
+	LinkLuaModifier("modifier_generic_bonus", "modifiers/modifier_generic_bonus.lua", LUA_MODIFIER_MOTION_NONE)
 
 	print("[BAREBONES] initialized.")
 	DebugPrint("[BAREBONES] Done loading the game mode!\n\n")
