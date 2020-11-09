@@ -1,6 +1,6 @@
-# Custom game for Dota 2 where all items are custom
+# Dota 2 but items are weird - Dota 2 custom game
 
-### Version 0.0.1.
+### Version 0.0.2.
 
 ## Core Files
 Core Files are the primary files which you should modify in order to get your basic game mode up and running.  There are 4 major files:

@@ -100,14 +100,12 @@ HERO_KILL_GOLD_BASE = 110               -- Hero gold bounty base value
 HERO_KILL_GOLD_PER_LEVEL = 10           -- Hero gold bounty increase per level
 HERO_KILL_GOLD_PER_STREAK = 60          -- Hero gold bounty per his kill-streak (Killing Spree: +HERO_KILL_GOLD_PER_STREAK gold; Ultrakill: +2 x HERO_KILL_GOLD_PER_STREAK gold ...)
 
--- NOTE: DISABLE_ALL_GOLD_FROM_HERO_KILLS requires GoldFilter.
 USE_CUSTOM_HERO_LEVELS = false          -- Should the heroes give a custom amount of XP when killed? Can malfunction for levels above 30!
 
 USE_CUSTOM_TOP_BAR_VALUES = true        -- Should we do customized top bar values or use the default kill count per team?
 TOP_BAR_VISIBLE = true                  -- Should we display the top bar score/count at all?
 SHOW_KILLS_ON_TOPBAR = true             -- Should we display kills only on the top bar? (No denies, suicides, kills by neutrals)  Requires USE_CUSTOM_TOP_BAR_VALUES
 
-ENABLE_TOWER_BACKDOOR_PROTECTION = true -- Should we enable backdoor protection for our buildings?
 --REMOVE_ILLUSIONS_ON_DEATH = false       -- Should we remove all illusions if the main hero dies? DOESN'T WORK
 DISABLE_GOLD_SOUNDS = false             -- Should we disable the gold sound when players acquire gold?
 

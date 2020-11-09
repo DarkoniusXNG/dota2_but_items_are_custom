@@ -63,7 +63,7 @@ end
 
 -- An NPC has spawned somewhere in game. This includes heroes
 function barebones:OnNPCSpawned(keys)
-	DebugPrint("[BAREBONES] A unit Spawned")
+	--DebugPrint("[BAREBONES] A unit Spawned")
 	--PrintTable(keys)
 
 	local npc = EntIndexToHScript(keys.entindex)
@@ -115,7 +115,7 @@ function barebones:OnHeroInGame(hero)
 				PlayerResource.PlayerData[playerID] = {}
 				DebugPrint("[BAREBONES] PlayerResource's PlayerData for playerID "..playerID.." was not properly initialized.")
 			end
-			if hero:IsClone() then
+			if hero:IsClone() or hero:HasModifier("modifier_monkey_king_fur_army_soldier_hidden") then
 				DebugPrint("[BAREBONES] Spawned hero is a clone (for example: meepo clone or monkey king ult clone)")
 			end
 			-- Set some hero stuff on first spawn or on every spawn (custom or not)
@@ -224,8 +224,7 @@ function barebones:OnPlayerLearnedAbility(keys)
 
 	-- Handling talents without custom net tables, this is just an example
 	local talents = {
-		{"special_bonus_unique_chaos_knight", "modifier_reality_rift_talent_1"},
-		{"special_bonus_unique_chaos_knight_2", "modifier_reality_rift_talent_2"}
+		{"special_bonus_unique_hero_name", "modifier_hero_name_ability_name_talent_number"},
 	}
 
 	for i = 1, #talents do
@@ -578,7 +577,7 @@ end
 
 -- This function is called whenever an NPC reaches its goal position/target (npc can be a lane creep, goal entity can be a path corner)
 function barebones:OnNPCGoalReached(keys)
-	DebugPrint("[BAREBONES] OnNPCGoalReached")
+	--DebugPrint("[BAREBONES] OnNPCGoalReached")
 	--PrintTable(keys)
 
 	local goal_entity_index = keys.goal_entindex             -- Entity index of the next goal entity on the path (if any) which the npc will now be pathing towards

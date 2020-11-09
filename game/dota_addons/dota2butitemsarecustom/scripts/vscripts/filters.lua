@@ -54,30 +54,6 @@ function barebones:OrderFilter(filter_table)
 		local caster = EntIndexToHScript(units["0"])
 	end
 
-	-- Example 2: If the order is a simple move command
-	if order == DOTA_UNIT_ORDER_MOVE_TO_POSITION and units["0"] then
-		local unit_with_order = EntIndexToHScript(units["0"])
-		local destination_x = filter_table.position_x
-		local destination_y = filter_table.position_y
-    end
-	
-	-- Example 3: Disable item sharing for a custom courier that everyone can control
-	--[[
-	if order == DOTA_UNIT_ORDER_DROP_ITEM or order == DOTA_UNIT_ORDER_GIVE_ITEM then
-		local unit_with_order = EntIndexToHScript(units["0"])
-		local ability_index = filter_table.entindex_ability
-		local ability = EntIndexToHScript(ability_index)
-
-		if unit_with_order:IsCourier() and ability and ability:IsItem() then
-			local purchaser = ability:GetPurchaser()
-			if purchaser and purchaser:GetPlayerID() ~= playerID then
-				CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(playerID), "display_custom_error", { message = "#hud_error_courier_cant_order_item" })
-				return false
-			end
-		end
-	end
-	]]
-
 	return true
 end
 

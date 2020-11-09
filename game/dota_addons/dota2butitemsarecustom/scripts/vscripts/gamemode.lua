@@ -88,7 +88,6 @@ function barebones:InitGameMode()
 	CustomGameEventManager:RegisterListener("butt_on_clicked", function(_,kv)
 		local name = kv.button
 		if name == "RESET" then
-			-- BUTTINGS = table.copy(BUTTINGS_DEFAULT)
 			for k, v in pairs(BUTTINGS_DEFAULT) do
 				CustomGameEventManager:Send_ServerToAllClients("butt_setting_changed", {setting = k, value = v})
 			end
@@ -266,7 +265,7 @@ function barebones:CaptureGameMode()
 	--gamemode:SetBuybackEnabled(BUYBACK_ENABLED)
 	gamemode:SetCustomBuybackCostEnabled(CUSTOM_BUYBACK_COST_ENABLED)
 	--gamemode:SetCustomBuybackCooldownEnabled(CUSTOM_BUYBACK_COOLDOWN_ENABLED)
-	gamemode:SetTopBarTeamValuesOverride(USE_CUSTOM_TOP_BAR_VALUES) -- Check if it works
+	gamemode:SetTopBarTeamValuesOverride(USE_CUSTOM_TOP_BAR_VALUES) -- It doesn't work probably
 	gamemode:SetTopBarTeamValuesVisible(TOP_BAR_VISIBLE)
 
 	-- if USE_CUSTOM_XP_VALUES then

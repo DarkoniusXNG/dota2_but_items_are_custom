@@ -53,6 +53,11 @@ function Precache(context)
 	-- Custom units from npc_units_custom.txt can also have all of their abilities and precache{} blocks precached in this way
 	--PrecacheUnitByNameSync("npc_dota_hero_ancient_apparition", context)
 	--PrecacheUnitByNameSync("npc_dota_hero_enigma", context)
+
+	-- Custom items
+	PrecacheItemByNameSync("item_custom_slippers_of_halcyon", context)
+	PrecacheItemByNameSync("item_ultimate_king_bar", context)
+	PrecacheItemByNameSync("item_infused_robe", context)
 end
 
 -- Create the game mode when we activate
