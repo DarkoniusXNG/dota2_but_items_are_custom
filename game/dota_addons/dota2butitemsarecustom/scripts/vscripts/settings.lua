@@ -81,7 +81,7 @@ MINIMAP_ICON_SIZE = 1                   -- What icon size should we use for our 
 MINIMAP_CREEP_ICON_SIZE = 1             -- What icon size should we use for creeps?
 MINIMAP_RUNE_ICON_SIZE = 1              -- What icon size should we use for runes?
 
-BUYBACK_ENABLED = BUYBACK_RULES == 0                  -- Should we allow players to buyback when they die?
+BUYBACK_ENABLED = BUTTINGS.BUYBACK_RULES == 0                  -- Should we allow players to buyback when they die?
 CUSTOM_BUYBACK_COST_ENABLED = false     -- Should we use a custom buyback cost setting?
 CUSTOM_BUYBACK_COOLDOWN_ENABLED = BUTTINGS.BUYBACK_COOLDOWN ~= 480  -- Should we use a custom buyback time?
 CUSTOM_BUYBACK_COOLDOWN_TIME = BUTTINGS.BUYBACK_COOLDOWN            -- Custom buyback cooldown time (needed if CUSTOM_BUYBACK_COOLDOWN_ENABLED is true).

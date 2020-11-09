@@ -237,6 +237,8 @@
 	"item_aether_lens"                                    "REMOVE"
 	"item_recipe_bloodthorn"                              "REMOVE"
 	"item_bloodthorn"                                     "REMOVE"
+	"item_recipe_dragon_lance"                            "REMOVE"
+	"item_dragon_lance"                                   "REMOVE"
 	"item_recipe_echo_sabre"                              "REMOVE"
 	"item_echo_sabre"                                     "REMOVE"
 	"item_recipe_holy_locket"                             "REMOVE"
