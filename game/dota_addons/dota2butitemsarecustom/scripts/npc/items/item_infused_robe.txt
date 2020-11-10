@@ -39,6 +39,7 @@
 		"AbilityTextureName"      		"custom/infused_robe"
 
 		"AbilityBehavior"       		"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
 		"AbilityCastPoint"        		"0.0"
 		"AbilityCooldown"       		"60"
 		"AbilitySharedCooldown"			"hood_of_defiance"
@@ -74,20 +75,20 @@
 				"var_type"					"FIELD_INTEGER"
 				"damage_block_chance"		"50"
 			}
-			"03" // Cloak (15);
+			"03" // Vanguard (250); Vitality Booster (250);
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bonus_health"				"250"
+			}
+			"04" // Cloak (15);
 			{
 				"var_type"					"FIELD_INTEGER"
 				"magic_resistance"		    "15"
 			}
-			"04" // Hood (8.5); Vanguard (7); Ring of Health (6.5)
+			"05" // Hood (8.5); Vanguard (7); Ring of Health (6.5)
 			{
 				"var_type"					"FIELD_FLOAT"
 				"bonus_health_regen"		"6.5"
-			}
-			"05" // Vanguard (250); Vitality Booster (250);
-			{
-				"var_type"					"FIELD_INTEGER"
-				"bonus_health"				"250"
 			}
 			"06" // Raindrop (0.8);
 			{

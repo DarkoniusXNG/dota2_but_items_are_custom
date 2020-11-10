@@ -9,6 +9,8 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"1278"
 		"BaseClass"                     "item_datadriven"
+		"AbilityTextureName"			"custom/custom_recipe"
+		"Model"							"models/props_gameplay/recipe.vmdl"
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
@@ -27,7 +29,7 @@
 	
 	//=================================================================================================================
 	// Magus Cloak - Mantle (145) + Circlet (155) + Sage Mask (175) + Faerie Fire (70) + Recipe (105) = 650
-	// Notes: OK; 25.12.2019;
+	// Notes: OK; 10.11.2020;
 	//=================================================================================================================
 	"item_custom_magus_cloak"
 	{
@@ -87,8 +89,13 @@
 			"07" // it should stack with other magus cloaks
 			{
 				"var_type"                                "FIELD_INTEGER"
-				"bonus_debuff_amp"                        "-5"
+				"bonus_cast_range"                        "50"
 			}
+			// "08" // 
+			// {
+				// "var_type"                                "FIELD_INTEGER"
+				// "bonus_debuff_amp"                        "-5"
+			// }
 		}
 	}
 }

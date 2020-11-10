@@ -22,12 +22,12 @@
 		"ItemResult"					"item_ultimate_king_bar"
 		"ItemRequirements"
 		{
-			"01"						"item_ghost" // Ghost King Bar + White Queen Cape
+			"01"						"item_ultimate_orb;item_ghost" // + White Queen Cape
 		}
 	}
 	
 	//=================================================================================================================
-	// Ultimate King Bar - Black King Bar (4050) + Ghost Scepter (1500) + Recipe (1500) = 7050
+	// Ultimate King Bar - White Queen Cape (4050) + Ultimate Orb (2050) + Ghost Scepter (1500) + Recipe (1500) = 7050
 	// Notes: OK; 25.12.2019; Ideal price should be like: BKB x 2; Duration should be the lowest duration of BKB;
 	//=================================================================================================================
 	"item_ultimate_king_bar"
@@ -48,6 +48,7 @@
 		"ItemDisassembleRule" 			"DOTA_ITEM_DISASSEMBLE_NEVER"
 		
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
 		"FightRecapLevel"				"2"
 		
 		"AbilityCooldown"				"60"
@@ -66,22 +67,22 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_strength"		"15"
+				"bonus_damage"			"30"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_agility"			"5"
+				"bonus_strength"		"25"
 			}
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_intellect"		"5"
+				"bonus_agility"			"15"
 			}
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_damage"			"30"
+				"bonus_intellect"		"15"
 			}
 			"05"
 			{

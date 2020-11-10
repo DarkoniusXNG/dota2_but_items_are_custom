@@ -38,6 +38,7 @@
 		"AbilityTextureName"      		"custom/orb_of_reflection"
 
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
 		"AbilityCastPoint"        		"0.0"
 		"AbilityCooldown"				"25.0" // Blade Mail (25); Lotus Orb (15);
 		"AbilitySharedCooldown"			"reflection_items"
@@ -62,41 +63,41 @@
 				"var_type"				"FIELD_INTEGER"
 				"bonus_dmg"				"0"
 			}
-			"02" // Plate Mail (10) + Chain Mail (4)
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_armor"			"15"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_str"				"0"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_agi"				"0"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_int"				"0"
-			}
-			"06" // Ring of Health (6.5)
-			{
-				"var_type"				"FIELD_FLOAT"
-				"bonus_hp_regen"		"6.5"
-			}
-			"07" // Lotus Orb (4.0)
-			{
-				"var_type"				"FIELD_FLOAT"
-				"bonus_mana_regen"		"4.0"
-			}			
-			"08" // Energy Booster (250);
+			"02" // Energy Booster (250);
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_mana"			"250"
 			}
+			"03" // Plate Mail (10) + Chain Mail (4)
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"15"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_str"				"0"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_agi"				"0"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_int"				"0"
+			}
+			"07" // Ring of Health (6.5)
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bonus_hp_regen"		"6.5"
+			}
+			"08" // Lotus Orb (4.0)
+			{
+				"var_type"				"FIELD_FLOAT"
+				"bonus_mana_regen"		"4.0"
+			}			
 			"09" // Return Damage is percent of damage before reductions and damage type is the same as original damage
 			{
 				"var_type"				"FIELD_INTEGER"
