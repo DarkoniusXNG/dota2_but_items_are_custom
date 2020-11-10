@@ -261,6 +261,12 @@ function barebones:GoldFilter(keys)
 		keys.gold = gold * BUTTINGS.GOLD_GAIN_PERCENTAGE * 0.01
 	end
 
+	if PASSIVE_GOLD_PER_MINUTE <= 0 then
+		if reason == DOTA_ModifyGold_GameTick then
+			keys.gold = 0
+		end
+	end
+
 	return true
 end
 

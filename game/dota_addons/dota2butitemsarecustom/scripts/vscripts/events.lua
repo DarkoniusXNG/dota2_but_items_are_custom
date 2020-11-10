@@ -245,7 +245,7 @@ function barebones:OnPlayerLevelUp(keys)
 	--PrintTable(keys)
 
 	local level = keys.level
-	local playerID = keys.player_id or keys.PlayerID -- Valve keep changing this :)
+	local playerID = keys.player_id or keys.PlayerID -- Valve keeps changing this :)
 
 	local hero 
 	if keys.hero_entindex then
@@ -356,7 +356,7 @@ end
 
 -- An entity died (an entity killed an entity)
 function barebones:OnEntityKilled(keys)
-    DebugPrint("[BAREBONES] An entity was killed.")
+    --DebugPrint("[BAREBONES] An entity was killed.")
     --PrintTable(keys)
 
     -- Indexes:
